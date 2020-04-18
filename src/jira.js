@@ -1292,6 +1292,24 @@ export default class JiraApi {
     ));
   }
 
+  /** Set worklog property
+   * [Jira Doc](https://docs.atlassian.com/jira/REST/latest/#d2e1673)
+   * @name setWorklogProperty
+   * @function
+   * @param {string} issueId - the Id of the issue to delete
+   * @param {string} worklogId - the Id of the worklog in issue to delete
+   */
+  setWorklogProperty(issueId, worklogId, propertyKey, object) {
+    return this.doRequest(this.makeRequestHeader(
+      this.makeUri({
+        pathname: `/issue/${issueId}/worklog/${worklogId}/properties/${propertyKey}`,
+      }), {
+        method: 'PUT',
+        body: object,
+      },
+    ));
+  }
+
   /** Deletes an issue link.
    * [Jira Doc](https://developer.atlassian.com/cloud/jira/platform/rest/v3/#api-rest-api-3-issueLink-linkId-delete)
    * @name deleteIssueLink
