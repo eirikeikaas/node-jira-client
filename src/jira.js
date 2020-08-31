@@ -1310,7 +1310,7 @@ export default class JiraApi {
     ));
   }
 
-    /** Set worklog property
+  /** Set worklog property
    * [Jira Doc](https://docs.atlassian.com/jira/REST/latest/#d2e1673)
    * @name deleteWorklogProperty
    * @function
