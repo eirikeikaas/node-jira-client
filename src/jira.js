@@ -1296,8 +1296,8 @@ export default class JiraApi {
    * [Jira Doc](https://docs.atlassian.com/jira/REST/latest/#d2e1673)
    * @name setWorklogProperty
    * @function
-   * @param {string} issueId - the Id of the issue to delete
-   * @param {string} worklogId - the Id of the worklog in issue to delete
+   * @param {string} issueId - the Id of the issue to set
+   * @param {string} worklogId - the Id of the worklog in issue to set
    */
   setWorklogProperty(issueId, worklogId, propertyKey, object) {
     return this.doRequest(this.makeRequestHeader(
@@ -1306,6 +1306,23 @@ export default class JiraApi {
       }), {
         method: 'PUT',
         body: object,
+      },
+    ));
+  }
+
+    /** Set worklog property
+   * [Jira Doc](https://docs.atlassian.com/jira/REST/latest/#d2e1673)
+   * @name deleteWorklogProperty
+   * @function
+   * @param {string} issueId - the Id of the issue to delete
+   * @param {string} worklogId - the Id of the worklog in issue to delete
+   */
+  deleteWorklogProperty(issueId, worklogId, propertyKey) {
+    return this.doRequest(this.makeRequestHeader(
+      this.makeUri({
+        pathname: `/issue/${issueId}/worklog/${worklogId}/properties/${propertyKey}`,
+      }), {
+        method: 'DELETE',
       },
     ));
   }
